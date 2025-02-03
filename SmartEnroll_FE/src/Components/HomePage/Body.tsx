@@ -1,41 +1,91 @@
-import React from "react";
+import React, { useEffect } from "react";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 import '../../tailwind.css'; 
+import { ArcherContainer, ArcherElement } from "react-archer";
+import AIPicture from '../../assets/AI.jpg';
+import UniPicture from '../../assets/dai-hoc-fpt-tp-hcm-1.jpeg';
+import Logo from '../../assets/LOGO/3.png';
 
-const Body: React.FC = () => {
+const BodySection: React.FC = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="text-center py-12 bg-blue-100">
-        <h1 className="text-3xl font-bold">Nền tảng hướng dẫn tuyển sinh đại học</h1>
-        <p className="mt-2 text-gray-700">Giúp học sinh tiếp cận cơ hội học tập tốt nhất</p>
-      </section>
+    <ArcherContainer 
+      strokeColor="rgba(125, 162, 206, 0.7)" 
+      strokeWidth={3}
+      endMarker={false}
+      lineStyle="curve"
+    >
+      <div className="bg-pink-50 py-12 px-6">
+        {/* Tiêu đề chính */}
+        <h2 className="text-center text-2xl font-bold mb-8" data-aos="fade-up">
+          Chúng tôi có gì
+        </h2>
 
-      {/* Features Section */}
-      <section className="py-12 px-6 grid md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="font-semibold text-lg">Tuyển sinh chatbot</h3>
-          <p className="text-gray-600 mt-2">Hỗ trợ học sinh tìm kiếm phương thức tuyển sinh phù hợp.</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="font-semibold text-lg">Quy chế tuyển sinh</h3>
-          <p className="text-gray-600 mt-2">Cập nhật quy chế tuyển sinh các trường đại học tại Việt Nam.</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="font-semibold text-lg">Đánh giá AI</h3>
-          <p className="text-gray-600 mt-2">Phân tích điểm số và đề xuất trường đại học phù hợp.</p>
-        </div>
-      </section>
+        {/* Nội dung chính */}
+        <div className="flex flex-col items-center space-y-40" >
+          
+          {/* Hình ảnh chính và mô tả */}
+          <div className="flex items-center space-x-30 " data-aos="fade-left">
+            <ArcherElement
+              id="main-description"
+              relations={[{ targetId: "university-info", targetAnchor: "top", sourceAnchor: "bottom" }]}
+            >
+              <img src={Logo} alt="Logo" className="w-80 h-60 rounded-3xl" />
+            </ArcherElement>
+            <div className="bg-white-100 p-4 h-60 w-80 text-2xl">
+              Tuyển sinh chatbot cung cấp công cụ trợ giúp toàn diện, giúp học sinh tiếp cận các phương thức tuyển sinh mới nhất của các trường đại học.
+            </div>
+          </div>
 
-      <section className="bg-blue-50 py-12 text-center">
-        <h2 className="text-2xl font-bold">Tại sao chọn chúng tôi?</h2>
-        <div className="grid md:grid-cols-3 gap-6 mt-6 px-6">
-          <div className="bg-white p-6 rounded-lg shadow-md">Hàng ngàn học sinh đã sử dụng</div>
-          <div className="bg-white p-6 rounded-lg shadow-md">Thông tin chính xác, cập nhật liên tục</div>
-          <div className="bg-white p-6 rounded-lg shadow-md">Công nghệ AI hỗ trợ hiệu quả</div>
+          {/* Nhánh trái */}
+          <div className="flex items-center space-x-45 " data-aos="fade-right">
+            <div className="bg-white-100 p-4 h-100 w-55 text-2xl">
+              Nắm bắt rõ quy chế tuyển sinh của từng trường đại học tại Việt Nam
+            </div>
+            <ArcherElement 
+              id="university-info"
+              relations={[{ targetId: "ai-box", targetAnchor: "top", sourceAnchor: "bottom" }]}
+            >
+              <img src={UniPicture} alt="Hinh anh" className="w-90 h-60 rounded-4xl" />
+            </ArcherElement>
+          </div>
+
+          {/* Nhánh phải */}
+          <div className="flex items-center space-x-45 space-y-10" data-aos="fade-left">
+            <ArcherElement 
+              id="ai-box"
+              relations={[{ targetId: "ai-image", targetAnchor: "top", sourceAnchor: "bottom" }]}
+            >
+              <img src={AIPicture} alt="Hinh anh" className="w-90 h-60 rounded-4xl" />
+            </ArcherElement>
+            <div className="bg-white-100 p-4 h-60 w-74 text-2xl">
+              Sử dụng AI để đánh giá số điểm các môn học, từ đó đề xuất cho học sinh những trường đại học phù hợp
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
+
+        {/* Tiêu đề phụ */}
+        <h2 className="text-center text-xl font-bold mt-12" data-aos="fade-up">
+          Tại sao nên chọn chúng tôi?
+        </h2>
+        <p className="text-center text-sm text-gray-500" data-aos="fade-up">
+          Được sử dụng bởi nhiều học sinh
+        </p>
+
+        {/* Ô thống kê */}
+        <div className="flex justify-center space-x-6 mt-6" data-aos="zoom-in">
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+        </div>
+      </div>
+    </ArcherContainer>
   );
 };
 
-export default Body;
+export default BodySection;

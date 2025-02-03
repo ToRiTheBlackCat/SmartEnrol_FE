@@ -27,7 +27,7 @@ interface BannerImageProps {
 
 const BannerImage: React.FC<BannerImageProps> = ({ image, active }) => {
   return (
-    <div className={`carousel-item ${active ? "active" : ""}`} data-bs-interval="1000">
+    <div className={`carousel-item ${active ? "active" : ""}`} data-bs-interval="3000">
       <div
         className="ratio"
         style={
@@ -39,7 +39,12 @@ const BannerImage: React.FC<BannerImageProps> = ({ image, active }) => {
           >
         <img className="d-block w-100 h-100 bg-dark cover" alt="" src={image} />
       </div>
+      <div className="carousel-caption d-none d-lg-block">
+        <h5>Smart Enrol</h5>
+        <p>Nền tảng hướng dẫn tuyển sinh đại học cho học sinh trung học phổ thông</p>
+      </div> 
     </div>
+    
   );
 };
 
@@ -49,8 +54,7 @@ const Banner: React.FC = () => {
       id="bannerIndicators"
       className="carousel slide"
       data-bs-ride="carousel"
-      data-bs-interval="1000"
-      style={{ marginTop: "56px" }}
+      data-bs-interval="3000"
     >
       <div className="carousel-indicators">
         <BannerIndicator index={0} active={true} />
