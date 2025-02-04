@@ -16,8 +16,8 @@ const Header: React.FC = () => {
         <a href="#" className="hover:text-blue-600">Hướng nghiệp</a>
         <a href="#" className="hover:text-blue-600">Về chúng tôi</a>
       </nav>
-      <a href="/login" className="bg-[#2860ab] text-white px-6 py-3 rounded-lg font-semibold flex items-center hover:bg-blue-700">
-        Đăng nhập <span className="ml-2">➡️</span>
+      <a href="/login" className="bg-[#2860ab] text-white px-6 py-3 rounded-lg font-bold flex items-center hover:bg-blue-700">
+        Đăng nhập
       </a>
     </header>
   );
