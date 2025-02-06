@@ -121,7 +121,12 @@ const BodySection: React.FC = () => {
         >
           Tại sao nên chọn chúng tôi?
         </h2>
-        <p className="text-center text-sm text-gray-500">Được sử dụng bởi nhiều học sinh</p>
+        <p 
+        id="why-choose-us"
+        data-section
+        className={`text-center text-sm text-gray-500 ${
+          visibleSections.has("why-choose-us") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}>Được sử dụng bởi nhiều học sinh</p>
 
         {/* Ô thống kê */}
         <div

@@ -1,7 +1,7 @@
 import React from "react";
-import BannerZero from "../../assets/p1.jpg";
-import BannerOne from "../../assets/p2.jpg";
-import BannerTwo from "../../assets/p3.jpg";
+import BannerZero from "../../assets/Banner1.jpg";
+import BannerOne from "../../assets/Banner 2.jpg";
+import BannerTwo from "../../assets/Banner4.jpg";
 
 interface BannerIndicatorProps {
   index: number;

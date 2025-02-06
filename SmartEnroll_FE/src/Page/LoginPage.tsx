@@ -32,7 +32,7 @@ const Login: React.FC = () => {
                 placeholder="Enter your password"
               />
               <div className="flex justify-between mt-2 text-sm text-gray-500">
-                <p className="cursor-pointer hover:underline">Forgot your password</p>
+                <a href='/set-new-password' className="cursor-pointer hover:underline">Forgot your password</a>
                 <p className="cursor-pointer hover:underline">Create new account</p>
               </div>
             </div>
