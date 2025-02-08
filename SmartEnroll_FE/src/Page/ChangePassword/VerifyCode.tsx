@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import VerifyCodeImage from '../../assets/verify-code.jpg';
-import Logo from '../../assets/LOGO/1-removebackground.png';
-
+import React, { useState } from "react";
+import VerifyCodeImage from "../../assets/verify-code.jpg";
+import Logo from "../../assets/LOGO/1-removebackground.png";
 
 const VerifyCode: React.FC = () => {
-  const [code, setCode] = useState('');
-  const [showCode, setShowCode] = useState(false);
-
+  const [code, setCode] = useState("");
+  // const [showCode, setShowCode] = useState(false);
+  const showCode = true;
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Code submitted:', code);
+    console.log("Code submitted:", code);
   };
 
   return (
@@ -18,18 +17,26 @@ const VerifyCode: React.FC = () => {
         {/* Left Section */}
         <div className="w-1/2 p-10 flex flex-col justify-center items-center">
           <img src={Logo} alt="Your Logo" className="h-20 w-20" />
-          <a href="/login" className="text-blue-500 hover:text-blue-700 text-sm mb-4">&lt; Back to login</a>
+          <a
+            href="/login"
+            className="text-blue-500 hover:text-blue-700 text-sm mb-4"
+          >
+            &lt; Back to login
+          </a>
           <h2 className="text-2xl font-semibold mb-2">Verify code</h2>
           <p className="text-gray-600 mb-6">
             An authentication code has been sent to your email.
           </p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4 relative">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="code">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="code"
+              >
                 Enter Code
               </label>
               <input
-                type={showCode ? 'text' : 'password'}
+                type={showCode ? "text" : "password"}
                 id="code"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
@@ -46,7 +53,8 @@ const VerifyCode: React.FC = () => {
               </button> */}
             </div>
             <p className="text-sm text-gray-600">
-              Didn’t receive a code? <span className="text-red-500 cursor-pointer">Resend</span>
+              Didn’t receive a code?{" "}
+              <span className="text-red-500 cursor-pointer">Resend</span>
             </p>
             <button
               type="submit"
@@ -67,4 +75,3 @@ const VerifyCode: React.FC = () => {
 };
 
 export default VerifyCode;
-
