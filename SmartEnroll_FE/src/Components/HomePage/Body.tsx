@@ -68,7 +68,7 @@ const BodySection: React.FC = () => {
               <img src={Logo} alt="Logo" className="w-80 h-60 rounded-3xl" />
             </ArcherElement>
             <div className="bg-white p-4 h-60 w-80 text-2xl">
-              Tuyển sinh chatbot cung cấp công cụ trợ giúp toàn diện, giúp học sinh tiếp cận các phương thức tuyển sinh mới nhất của các trường đại học.
+            Ai Agent tư vấn tuyển sinh đại học cung cấp... phương thức tuyển sinh và các ngành học mới nhất.....
             </div>
           </div>
 
@@ -81,7 +81,7 @@ const BodySection: React.FC = () => {
             }`}
           >
             <div className="bg-white p-4 h-100 w-55 text-2xl">
-              Nắm bắt rõ quy chế tuyển sinh của từng trường đại học tại Việt Nam
+              Luôn cập nhật các quy chế tuyển sinh mới nhất ... qua các năm 
             </div>
             <ArcherElement 
               id="university-info"
@@ -106,7 +106,7 @@ const BodySection: React.FC = () => {
               <img src={AIPicture} alt="Hinh anh" className="w-90 h-60 rounded-4xl" />
             </ArcherElement>
             <div className="bg-white p-4 h-60 w-74 text-2xl">
-              Sử dụng AI để đánh giá số điểm các môn học, từ đó đề xuất cho học sinh những trường đại học phù hợp
+              Sử dụng AI để đánh giá số điểm học bạ của học sinh, từ đó đề xuất cho học sinh những trường đại học phù hợp
             </div>
           </div>
         </div>

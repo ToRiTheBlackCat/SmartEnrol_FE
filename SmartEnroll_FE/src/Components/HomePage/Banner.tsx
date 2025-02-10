@@ -39,10 +39,10 @@ const BannerImage: React.FC<BannerImageProps> = ({ image, active }) => {
           >
         <img className="d-block w-100 h-100 bg-dark cover" alt="" src={image} />
       </div>
-      <div className="carousel-caption d-none d-lg-block">
+      {/* <div className="carousel-caption d-none d-lg-block" style={{color: "blue"}}>
         <h5>Smart Enrol</h5>
         <p>Nền tảng hướng dẫn tuyển sinh đại học cho học sinh trung học phổ thông</p>
-      </div> 
+      </div>  */}
     </div>
     
   );
