@@ -68,7 +68,7 @@ const BodySection: React.FC = () => {
               <img src={Logo} alt="Logo" className="w-80 h-60 rounded-3xl" />
             </ArcherElement>
             <div className="bg-white p-4 h-60 w-80 text-2xl">
-              Tuyển sinh chatbot cung cấp công cụ trợ giúp toàn diện, giúp học sinh tiếp cận các phương thức tuyển sinh mới nhất của các trường đại học.
+            Ai Agent tư vấn tuyển sinh đại học cung cấp... phương thức tuyển sinh và các ngành học mới nhất.....
             </div>
           </div>
 
@@ -81,7 +81,7 @@ const BodySection: React.FC = () => {
             }`}
           >
             <div className="bg-white p-4 h-100 w-55 text-2xl">
-              Nắm bắt rõ quy chế tuyển sinh của từng trường đại học tại Việt Nam
+              Luôn cập nhật các quy chế tuyển sinh mới nhất ... qua các năm 
             </div>
             <ArcherElement 
               id="university-info"
@@ -106,7 +106,7 @@ const BodySection: React.FC = () => {
               <img src={AIPicture} alt="Hinh anh" className="w-90 h-60 rounded-4xl" />
             </ArcherElement>
             <div className="bg-white p-4 h-60 w-74 text-2xl">
-              Sử dụng AI để đánh giá số điểm các môn học, từ đó đề xuất cho học sinh những trường đại học phù hợp
+              Sử dụng AI để đánh giá số điểm học bạ của học sinh, từ đó đề xuất cho học sinh những trường đại học phù hợp
             </div>
           </div>
         </div>
@@ -141,6 +141,56 @@ const BodySection: React.FC = () => {
           <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
           <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
         </div>
+                {/* Top các trường đại học Việt Nam */}
+                <h2
+          id="top-universities"
+          data-section
+          className={`text-center text-xl font-bold mt-12 transition-all duration-700  ${
+            visibleSections.has("top-universities") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          Top các trường đại học Việt Nam
+        </h2>
+        <div
+          id="universities"
+          data-section
+          className={`flex justify-center space-x-6 mt-6 transition-all duration-700 ${
+            visibleSections.has("universities") ? "opacity-100 scale-100" : "opacity-0 scale-90"
+          }`}
+        >
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          {/* <img src={require('../../assets/university1.png')} alt="University 1" className="w-24 h-24" />
+          <img src={require('../../assets/university2.png')} alt="University 2" className="w-24 h-24" />
+          <img src={require('../../assets/university3.png')} alt="University 3" className="w-24 h-24" /> */}
+        </div>
+
+        {/* Top các ngành sinh viên lựa chọn */}
+        <h2
+          id="top-majors"
+          data-section
+          className={`text-center text-xl font-bold mt-12 transition-all duration-700  ${
+            visibleSections.has("top-majors") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          Top các ngành sinh viên lựa chọn
+        </h2>
+        <div
+          id="majors"
+          data-section
+          className={`flex justify-center space-x-6 mt-6 transition-all duration-700 ${
+            visibleSections.has("majors") ? "opacity-100 scale-100" : "opacity-0 scale-90"
+          }`}
+        >
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+          {/* <img src={require('../../assets/major1.png')} alt="Major 1" className="w-24 h-24" />
+          <img src={require('../../assets/major2.png')} alt="Major 2" className="w-24 h-24" />
+          <img src={require('../../assets/major3.png')} alt="Major 3" className="w-24 h-24" /> */}
+        </div>
+
       </div>
     </ArcherContainer>
   );

@@ -9,6 +9,8 @@ import SetNewPassword from "./Page/ChangePassword/SetNewPassword";
 import ChatbotPage from "./Page/ChatbotPage";
 import AdminLayout from "./Page/Admin/AdminLayout";
 import Dashboard from "./Page/Admin/Pages/Dashboard";
+import AboutUs from "./Page/AboutUs";
+import Profile from "./Page/Profile";
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,8 @@ const App: React.FC = () => {
         <Route path="/forgot-password" element={<ForgotPassword/>}/>
         <Route path="/verify-code" element={<VerifyCode/>}/>
         <Route path="/set-new-password" element={<SetNewPassword/>}/>
+        <Route path="/about-us" element={<AboutUs/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
     </Router>
   );
