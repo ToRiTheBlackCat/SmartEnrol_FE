@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/auth": "^1.9.0",
     "@tailwindcss/vite": "^4.0.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
