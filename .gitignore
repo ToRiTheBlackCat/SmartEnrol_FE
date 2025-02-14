@@ -5,6 +5,7 @@ node_modules/
 
 # Production build
 build/
+dist/
 
 # Logs
 npm-debug.log*
@@ -79,3 +80,6 @@ stylelintcache
 
 # Test output
 jest-test-results.json
+
+# Local Netlify folder
+.netlify
