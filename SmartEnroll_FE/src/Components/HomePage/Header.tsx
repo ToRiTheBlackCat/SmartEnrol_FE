@@ -22,7 +22,7 @@ const Header: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [user?.photoURL]);
 
   return (
     <header className="w-full h-30 flex items-center justify-between px-10 py-4 shadow-md">
