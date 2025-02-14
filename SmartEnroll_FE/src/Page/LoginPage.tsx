@@ -23,6 +23,7 @@ const Login: React.FC = () => {
 
       console.log("User signed in:", result.user);
       setUser(result.user);
+      console.log(user)
       navigate("/");
     } catch (error) {
       console.error("Error signing in with Google:", error);

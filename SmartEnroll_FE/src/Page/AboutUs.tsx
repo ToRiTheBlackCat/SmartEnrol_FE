@@ -1,4 +1,4 @@
-import React from "react";
+
 import Header from "../Components/HomePage/Header";
 // Component cho từng mục trong About Us
 const FeatureSection = ({ title, description, imgSrc, index }: {
