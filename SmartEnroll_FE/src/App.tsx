@@ -6,6 +6,7 @@ import Login from "./Page/LoginPage";
 import ForgotPassword from "./Page/ChangePassword/ForgotPassword";
 import VerifyCode from "./Page/ChangePassword/VerifyCode";
 import SetNewPassword from "./Page/ChangePassword/SetNewPassword";
+import Register from "./Page/RegisterPage";
 import ChatbotPage from "./Page/ChatbotPage";
 import AdminLayout from "./Page/Admin/AdminLayout";
 import Dashboard from "./Page/Admin/Pages/Dashboard";
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Homepage/>} />
         <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
         <Route path="/chatbot" element={<ChatbotPage/>} />
         
         {/* Admin Routes */}
