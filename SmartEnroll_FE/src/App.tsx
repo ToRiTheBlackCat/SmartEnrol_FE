@@ -18,7 +18,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Homepage/>} />
         <Route path="/login" element={<Login/>}/>
-        <Route path="/chatbot" element={<ChatbotPage/>} />
+        <Route path="/chat-with-ai" element={<ChatbotPage/>} />
         
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>

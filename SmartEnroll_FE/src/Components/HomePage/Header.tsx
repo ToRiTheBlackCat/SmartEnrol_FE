@@ -25,12 +25,12 @@ const Header: React.FC = () => {
   }, [user?.photoURL]);
 
   return (
-    <header className="w-full h-30 flex items-center justify-between px-10 py-4 shadow-md">
+    <header className="bg-gray-900 w-full h-30 flex items-center justify-between px-10 py-4 shadow-md">
       <div className="flex items-center">
         <Link to="/">
           <img src={Logo} alt="Logo" className="h-26 w-26 mr-2 cursor-pointer" />
         </Link>
-        <span className="text-xl font-bold text-[#2860ab]">Smart Enrol</span>
+        <span className="text-xl font-bold text-[#ffffff]">Smart Enrol</span>
       </div>
       <nav className="flex space-x-4">
         {menuItems.map((item) => (
