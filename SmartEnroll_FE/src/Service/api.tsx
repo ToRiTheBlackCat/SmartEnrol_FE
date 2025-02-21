@@ -16,11 +16,26 @@ export const useAuth = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      setUser(response.data);
-      return response.data;
+      console.log('Login API Response:', response.data);
+
+      if (!response.data.token || !response.data.accountId) {
+        console.error('Missing token or accountId in response');
+        return null;
+      }
+
+      const userData: User = {
+        token: response.data.token,
+        accountId: response.data.accountId,
+        accountName: response.data.accountName || email.split('@')[0],
+        email: response.data.email || email
+      };
+
+      setUser(userData);
+      return userData;
     } catch (err: unknown) {
       const axiosError = err as AxiosError<{ message: string }>;
-      setError(axiosError.response?.data?.message || "Login failed"); // Lấy lỗi từ API
+      console.error('Login API Error:', axiosError.response?.data);
+      setError(axiosError.response?.data?.message || "Login failed");
       return null;
     }
   };
@@ -69,5 +84,36 @@ export const viewUserInfo = async (userId: string) =>{
     throw error;
   }
 }
+
+export const updateProfileAPI = async (accountId: string, accountName: string, email: string, token: string) => {
+  try {
+    console.log('Sending update profile request:', { accountId, accountName, email });
+    console.log('Token:', token);
+
+    const response = await axios.patch(
+      `${API_URL}/Account/update-profile`,
+      {
+        accountId,
+        accountName,
+        email
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      }
+    );
+
+    console.log('Update profile response:', response.data);
+    return response.data;
+  } catch (error: any) {
+    console.error("Update profile error:", error.response?.data || error.message);
+    if (error.response?.status === 401) {
+      throw new Error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
+    }
+    throw new Error(error.response?.data?.message || "Cập nhật thông tin thất bại");
+  }
+};
 
 
