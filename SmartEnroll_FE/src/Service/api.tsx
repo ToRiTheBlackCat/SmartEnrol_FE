@@ -25,7 +25,27 @@ export const useAuth = () => {
     }
   };
 
-  return { loginAPI, User, error };
+  const signupAPI = async (accountName: string, email: string, password: string): Promise<{ result: string, submitData: any } | null> => {
+    try {
+      const response = await axios.post(
+        `${API_URL}/account/signup`,
+        { 
+          accountName,
+          email,
+          password,
+          confirmPassword: password
+        },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      return response.data;
+    } catch (err: unknown) {
+      const axiosError = err as AxiosError<{ message: string }>;
+      setError(axiosError.response?.data?.message || "Đăng ký thất bại");
+      return null;
+    }
+  };
+
+  return { loginAPI, signupAPI, User, error };
 };
 
 export const googleLoginAPI = async (email: string, name: string) =>{
