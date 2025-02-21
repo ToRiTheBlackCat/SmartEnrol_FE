@@ -4,6 +4,7 @@ import { ArcherContainer, ArcherElement } from "react-archer";
 import AIPicture from '../../assets/AI.jpg';
 import UniPicture from '../../assets/dai-hoc-fpt-tp-hcm-1.jpeg';
 import Logo from '../../assets/LOGO/3.png';
+// import {motion} from 'framer-motion';
 
 const BodySection: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -33,17 +34,17 @@ const BodySection: React.FC = () => {
 
   return (
     <ArcherContainer 
-      strokeColor="rgba(125, 162, 206, 0.7)" 
+      strokeColor="#FF0000" 
       strokeWidth={3}
       endMarker={false}
       lineStyle="curve"
     >
-      <div className="bg-white py-12 px-6">
+      <div className="relative overflow-hidden bg-gray-900 pt-16 pb-32 space-y-24">
         {/* Tiêu đề chính */}
         <h2
           id="main-title"
           data-section
-          className={`text-center text-2xl font-bold mb-8 transition-all duration-700 ${
+          className={`text-center text-2xl text-white font-bold mb-8 transition-all duration-700 ${
             visibleSections.has("main-title") ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
           }`}
         >
@@ -67,7 +68,7 @@ const BodySection: React.FC = () => {
             >
               <img src={Logo} alt="Logo" className="w-80 h-60 rounded-3xl" />
             </ArcherElement>
-            <div className="bg-white p-4 h-60 w-80 text-2xl">
+            <div className="text-white p-4 h-60 w-80 text-2xl">
             Ai Agent tư vấn tuyển sinh đại học cung cấp... phương thức tuyển sinh và các ngành học mới nhất.....
             </div>
           </div>
@@ -80,7 +81,7 @@ const BodySection: React.FC = () => {
               visibleSections.has("university-info") ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="bg-white p-4 h-100 w-55 text-2xl">
+            <div className="text-white p-4 h-100 w-55 text-2xl">
               Luôn cập nhật các quy chế tuyển sinh mới nhất ... qua các năm 
             </div>
             <ArcherElement 
@@ -105,7 +106,7 @@ const BodySection: React.FC = () => {
             >
               <img src={AIPicture} alt="Hinh anh" className="w-90 h-60 rounded-4xl" />
             </ArcherElement>
-            <div className="bg-white p-4 h-60 w-74 text-2xl">
+            <div className="text-white p-4 h-60 w-74 text-2xl">
               Sử dụng AI để đánh giá số điểm học bạ của học sinh, từ đó đề xuất cho học sinh những trường đại học phù hợp
             </div>
           </div>
@@ -115,7 +116,7 @@ const BodySection: React.FC = () => {
         <h2
           id="why-choose-us"
           data-section
-          className={`text-center text-xl font-bold mt-12 transition-all duration-700  ${
+          className={`text-center text-xl text-white font-bold mt-12 transition-all duration-700  ${
             visibleSections.has("why-choose-us") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -145,7 +146,7 @@ const BodySection: React.FC = () => {
                 <h2
           id="top-universities"
           data-section
-          className={`text-center text-xl font-bold mt-12 transition-all duration-700  ${
+          className={`text-center text-xl text-white font-bold mt-12 transition-all duration-700  ${
             visibleSections.has("top-universities") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -170,7 +171,7 @@ const BodySection: React.FC = () => {
         <h2
           id="top-majors"
           data-section
-          className={`text-center text-xl font-bold mt-12 transition-all duration-700  ${
+          className={`text-center text-xl text-white font-bold mt-12 transition-all duration-700  ${
             visibleSections.has("top-majors") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
