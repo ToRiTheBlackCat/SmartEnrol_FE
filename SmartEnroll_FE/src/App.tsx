@@ -8,7 +8,6 @@ import Login from "./Page/LoginPage";
 import ForgotPassword from "./Page/ChangePassword/ForgotPassword";
 import VerifyCode from "./Page/ChangePassword/VerifyCode";
 import SetNewPassword from "./Page/ChangePassword/SetNewPassword";
-import Register from "./Page/RegisterPage";
 import ChatbotPage from "./Page/ChatbotPage";
 import AdminLayout from "./Page/Admin/AdminLayout";
 import Dashboard from "./Page/Admin/Pages/Dashboard";
