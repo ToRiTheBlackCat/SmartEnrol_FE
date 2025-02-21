@@ -2,15 +2,19 @@ import Background from '../assets/Login.jpg';
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import { signInWithPopup, GoogleAuthProvider, User } from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import {useAuth, googleLoginAPI} from '../Service/api';
+import {useAuth, googleLoginAPI, viewUserInfo} from '../Service/api';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setUserRedux } from '../Store/authSlice';
+import store from '../Store/store';
 const Login: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const { loginAPI, User, error } = useAuth(); 
   const navigate = useNavigate();
 
@@ -35,7 +39,7 @@ const Login: React.FC = () => {
       console.log("Login successful:", response);
 
       console.log("User signed in:", result.user);
-      toast.success("Logged in successfully!", { position: "top-right" });
+      toast.success(`Welcome, ${name}`, { position: "top-right" });
       setUser(result.user);
       console.log(user)
       navigate("/");
@@ -48,7 +52,15 @@ const Login: React.FC = () => {
   const handleLoginBasic = async () => {
     const loggedInUser = await loginAPI(email, password);
     if(loggedInUser){
-      toast.success("Login successfully", {position: "top-right"});
+      dispatch(setUserRedux({token: loggedInUser.token, accountId: loggedInUser.accountId}));
+      const userId = store.getState().auth.accountId;
+      if(userId==null){
+        console.log(error);
+        return
+      }
+      const userData = await viewUserInfo(userId)
+      const userName = userData.accountName;
+      toast.success(`Welcome, ${userName}`, {position: "top-right"});
       console.log(User);
       navigate(`/`);
     }else{

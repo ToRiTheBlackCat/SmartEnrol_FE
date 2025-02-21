@@ -60,4 +60,14 @@ export const googleLoginAPI = async (email: string, name: string) =>{
   }
 }
 
+export const viewUserInfo = async (userId: string) =>{
+  try{
+    const response = await axios.get(`${API_URL}/Account/${userId}`)
+    return response.data;
+  }catch(error){
+    console.error("Get data fail", error);
+    throw error;
+  }
+}
+
 

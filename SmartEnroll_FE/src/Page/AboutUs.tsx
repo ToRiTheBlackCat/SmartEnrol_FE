@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../Components/HomePage/Header";
+// import { useSelector } from "react-redux";
+// import { RootState } from "../Store/store";
 
 const FeatureSection = ({ title, description, imgSrc, index }: { 
   title: string; 
@@ -10,6 +12,8 @@ const FeatureSection = ({ title, description, imgSrc, index }: {
   const reverse = index % 2 !== 0;
   const sectionId = `feature-${index}`;
   const [isVisible, setIsVisible] = useState(false);
+  // const userToken = useSelector((state: RootState) => state.auth.token);
+  // const userId = useSelector((state: RootState) => state.auth.accountId);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +24,8 @@ const FeatureSection = ({ title, description, imgSrc, index }: {
         setIsVisible(inViewport);
       }
     };
+    // console.log("userId: ", userId);
+    // console.log("userToken: ", userToken);
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();

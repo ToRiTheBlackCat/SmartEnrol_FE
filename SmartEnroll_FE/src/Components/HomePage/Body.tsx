@@ -4,7 +4,7 @@ import { ArcherContainer, ArcherElement } from "react-archer";
 import AIPicture from '../../assets/AI.jpg';
 import UniPicture from '../../assets/dai-hoc-fpt-tp-hcm-1.jpeg';
 import Logo from '../../assets/LOGO/3.png';
-import {motion} from 'framer-motion';
+// import {motion} from 'framer-motion';
 
 const BodySection: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
