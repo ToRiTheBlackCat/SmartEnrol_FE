@@ -13,6 +13,10 @@ import AdminLayout from "./Page/Admin/AdminLayout";
 import Dashboard from "./Page/Admin/Pages/Dashboard";
 import AboutUs from "./Page/AboutUs";
 import Profile from "./Page/Profile";
+import RegisterPage from "./Page/RegisterPage";
+import AIFeaturesPage from "./Page/AIFeaturesPage";
+import UserManagement from "./Page/Admin/Pages/UserManagement";
+import ChatManagement from "./Page/Admin/Pages/ChatManagement";
 
 const App: React.FC = () => {
   return (
@@ -23,12 +27,16 @@ const App: React.FC = () => {
         <Route path="/" element={<Homepage/>} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/chat-with-ai" element={<ChatbotPage/>} />
+        <Route path="/register" element={<RegisterPage/>}/>
+        <Route path="/chatbot" element={<ChatbotPage/>} />
+        <Route path="/ai-features" element={<AIFeaturesPage/>} />
         
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
-          {/* Add more admin routes as needed */}
+          <Route path="users" element={<UserManagement />} />
+          <Route path="chat" element={<ChatManagement />} />
         </Route>
         <Route path="/forgot-password" element={<ForgotPassword/>}/>
         <Route path="/verify-code" element={<VerifyCode/>}/>
