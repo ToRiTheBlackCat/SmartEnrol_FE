@@ -4,8 +4,14 @@ import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { signInWithPopup, GoogleAuthProvider, User } from "firebase/auth";
 import { auth } from "../Utils/firebase";
+import {useAuth, googleLoginAPI} from '../Service/api';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loginAPI, User, error } = useAuth(); 
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async (): Promise<void> => {
@@ -13,22 +19,43 @@ const Login: React.FC = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const email = result.user.email;
+      const name = result.user.displayName;
 
       if (!email) {
         console.error("Email not found");
         return;
       }
+      if (!name) {
+        console.error("Name not found");
+        return;
+      }
 
       // Call backend API to register/login the user
+      const response = await googleLoginAPI(email, name);
+      console.log("Login successful:", response);
 
       console.log("User signed in:", result.user);
+      toast.success("Logged in successfully!", { position: "top-right" });
       setUser(result.user);
       console.log(user)
       navigate("/");
     } catch (error) {
+      toast.error("Error signing in with Google", { position: "top-right" });
       console.error("Error signing in with Google:", error);
     }
   };
+
+  const handleLoginBasic = async () => {
+    const loggedInUser = await loginAPI(email, password);
+    if(loggedInUser){
+      toast.success("Login successfully", {position: "top-right"});
+      console.log(User);
+      navigate(`/`);
+    }else{
+      toast.error(error || "Login failed", { position: "top-right" });
+      console.log(error);
+    }
+  }
   return (
     <div className="h-screen w-full flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${Background})` }}>
       {/* Form đăng nhập */}
@@ -40,6 +67,8 @@ const Login: React.FC = () => {
           <label className="block text-gray-300 text-sm mb-2">Email</label>
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="name@example.com"
           />
@@ -49,6 +78,8 @@ const Login: React.FC = () => {
           <label className="block text-gray-300 text-sm mb-2">Password</label>
           <input
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="••••••••"
           />
@@ -57,7 +88,9 @@ const Login: React.FC = () => {
           </div>
         </div>
         {/* Login Button */}
-        <button className="w-full py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600">Login</button>
+        <button 
+        onClick={handleLoginBasic}
+        className="w-full py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600">Login</button>
         <div className="text-center mt-4">
         <button
           onClick={handleGoogleSignIn}
