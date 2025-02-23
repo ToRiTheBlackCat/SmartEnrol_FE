@@ -36,6 +36,7 @@ const Login: React.FC = () => {
 
       // Call backend API to register/login the user
       const response = await googleLoginAPI(email, name);
+      dispatch(setUserRedux({token: response.token, accountId: response.accountId}));
       console.log("Login successful:", response);
 
       console.log("User signed in:", result.user);
