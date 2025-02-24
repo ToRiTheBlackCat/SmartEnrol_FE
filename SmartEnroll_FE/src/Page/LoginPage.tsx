@@ -96,22 +96,22 @@ const Login: React.FC = () => {
   };
 
   const handleLoginBasic = async () => {
-    const loggedInUser = await loginAPI(email, password);
+    const loggedInUser = await loginAPI(formData.email, formData.password);
     if(loggedInUser){
-      dispatch(setUserRedux({token: loggedInUser.token, accountId: loggedInUser.accountId}));
+      
       const userId = store.getState().auth.accountId;
       if(userId==null){
-        console.log(error);
         return
       }
       const userData = await viewUserInfo(userId)
       const userName = userData.accountName;
+      const userEmail = userData.email;
+      dispatch(setUserRedux({token: loggedInUser.token, accountId: loggedInUser.accountId, accountName: userName, email: userEmail }));
       toast.success(`Welcome, ${userName}`, {position: "top-right"});
-      console.log(User);
+      // console.log(User);
       navigate(`/`);
     }else{
-      toast.error(error || "Login failed", { position: "top-right" });
-      console.log(error);
+      toast.error("Login failed", { position: "top-right" });
     }
   }
   return (
@@ -149,6 +149,7 @@ const Login: React.FC = () => {
 
           <button 
             type="submit"
+            onClick={handleLoginBasic}
             disabled={isLoading}
             className={`w-full py-2 text-white rounded-lg font-semibold ${
               isLoading 

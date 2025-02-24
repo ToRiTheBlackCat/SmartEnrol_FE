@@ -60,14 +60,14 @@ const Header: React.FC = () => {
           : 'bg-white'
       }`}
     >
-      <nav className="container mx-auto px-4">
+      <nav className="container mx-auto">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2">
               <img src={Logo} alt="Logo" className="h-10 w-auto" />
               <span className="text-blue-700 font-bold text-xl tracking-wide">Smart Enrol</span>
             </Link>
