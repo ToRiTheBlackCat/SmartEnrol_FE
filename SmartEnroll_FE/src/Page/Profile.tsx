@@ -60,6 +60,7 @@ const ProfilePage: React.FC = () => {
       setEditForm(newUserInfo);
       dispatch(updateUserInfo(newUserInfo));
     } catch (error) {
+      console.log(error);
       toast.error("Không thể tải thông tin người dùng");
       navigate("/login");
     }
