@@ -17,6 +17,7 @@ import RegisterPage from "./Page/RegisterPage";
 import AIFeaturesPage from "./Page/AIFeaturesPage";
 import UserManagement from "./Page/Admin/Pages/UserManagement";
 import ChatManagement from "./Page/Admin/Pages/ChatManagement";
+import CareerGuidancePage from "./Page/CareerGuidancePage";
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/register" element={<RegisterPage/>}/>
         <Route path="/chatbot" element={<ChatbotPage/>} />
         <Route path="/ai-features" element={<AIFeaturesPage/>} />
+        <Route path="/career-guidance" element={<CareerGuidancePage/>}/>
         
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>

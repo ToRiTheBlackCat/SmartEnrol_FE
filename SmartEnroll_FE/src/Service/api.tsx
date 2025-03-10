@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { User } from "./type";
 
-const API_URL = "https://smartenrol.azurewebsites.net/api";
+const API_URL = "https://smartenrol2.azurewebsites.net/api";
 
 export const useAuth = () => {
   const [User, setUser] = useState<User | null>(null);
