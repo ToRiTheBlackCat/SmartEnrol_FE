@@ -45,7 +45,7 @@ const Header: React.FC = () => {
     { path: '/', label: 'Trang chủ', icon: FiHome },
     { path: '/chat-with-ai', label: 'Chat with AI', icon: FiMessageSquare },
     { path: '/tuyển-sinh', label: 'Tuyển sinh', icon: FiBook },
-    { path: '/hướng-nghiệp', label: 'Hướng nghiệp', icon: FiCompass },
+    { path: '/career-guidance', label: 'Hướng nghiệp', icon: FiCompass },
     { path: '/about-us', label: 'About Us', icon: FiInfo },
   ];
 
