@@ -5,8 +5,9 @@ import { updateProfileAPI, viewUserInfo } from "../Service/api";
 import { toast } from "react-toastify";
 import { updateUserInfo } from "../Store/authSlice";
 import { useNavigate } from "react-router-dom";
-import { FiEdit2, FiUser, FiMail, FiActivity, FiSettings } from "react-icons/fi";
+import { FiEdit2, FiUser, FiMail, FiActivity, FiSettings, FiNavigation } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
+import { provinces } from "../data/Provinces";
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,10 +23,14 @@ const ProfilePage: React.FC = () => {
   const [userInfo, setUserInfo] = useState({
     accountName: "",
     email: "",
+    areaId: 0,
+    area:"",
   });
   const [editForm, setEditForm] = useState({
     accountName: "",
     email: "",
+    areaId: 0,
+    area:"",
   });
 
   useEffect(() => {
@@ -35,26 +40,29 @@ const ProfilePage: React.FC = () => {
       return;
     }
 
-    if (userAccountName && userEmail) {
-      setUserInfo({
-        accountName: userAccountName,
-        email: userEmail,
-      });
-      setEditForm({
-        accountName: userAccountName,
-        email: userEmail,
-      });
-    } else {
+    // if (userAccountName && userEmail && ) {
+    //   setUserInfo({
+    //     accountName: userAccountName,
+    //     email: userEmail,
+    //   });
+    //   setEditForm({
+    //     accountName: userAccountName,
+    //     email: userEmail,
+    //   });
+    // } else {
       fetchUserInfo();
-    }
+    // }
   }, [userId, userToken, userAccountName, userEmail, navigate]);
 
   const fetchUserInfo = async () => {
     try {
       const data = await viewUserInfo(userId!);
+      console.log("Data", data)
       const newUserInfo = {
-        accountName: data.accountName,
-        email: data.email,
+        accountName: data.account.accountName,
+        email: data.account.email,
+        areaId: data.account.areaId,
+        area: data.account.areaName,
       };
       setUserInfo(newUserInfo);
       setEditForm(newUserInfo);
@@ -75,15 +83,26 @@ const ProfilePage: React.FC = () => {
     setEditForm({
       accountName: userInfo.accountName,
       email: userInfo.email,
+      areaId: userInfo.areaId,
+      area: userInfo.area,
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setEditForm(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    if (name === "area") {
+      const selectedProvince = provinces.find((p) => p.area === value);
+      setEditForm((prev) => ({
+        ...prev,
+        area: value,
+        areaId: selectedProvince ? selectedProvince.areaId : 0,
+      }));
+    } else {
+      setEditForm((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -100,13 +119,17 @@ const ProfilePage: React.FC = () => {
         userId,
         editForm.accountName,
         editForm.email,
+        editForm.area,
+        editForm.areaId,
         userToken
       );
+      console.log(editForm);
 
       if (response) {
         dispatch(updateUserInfo({
           accountName: editForm.accountName,
-          email: editForm.email
+          email: editForm.email,
+          area: editForm.area
         }));
         setUserInfo(editForm);
         setIsEditing(false);
@@ -167,6 +190,25 @@ const ProfilePage: React.FC = () => {
               required
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Area
+            </label>
+            <select
+              name="area"
+              value={editForm.area}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            >
+              <option value="">Chọn tỉnh/thành phố</option>
+              {provinces.map((province) => (
+                <option key={province.areaId} value={province.area}>
+                  {province.area}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="flex justify-end gap-3 pt-4">
             <button
               type="button"
@@ -206,6 +248,15 @@ const ProfilePage: React.FC = () => {
             <div>
               <p className="text-sm text-gray-500">Email</p>
               <p className="text-base font-medium text-gray-900">{userInfo.email}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+              <FiNavigation className="w-5 h-5 text-blue-600" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Area</p>
+              <p className="text-base font-medium text-gray-900">{userInfo.area}</p>
             </div>
           </div>
         </div>

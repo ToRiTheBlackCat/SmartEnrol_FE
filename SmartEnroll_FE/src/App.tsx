@@ -18,6 +18,7 @@ import AIFeaturesPage from "./Page/AIFeaturesPage";
 import UserManagement from "./Page/Admin/Pages/UserManagement";
 import ChatManagement from "./Page/Admin/Pages/ChatManagement";
 import CareerGuidancePage from "./Page/CareerGuidancePage";
+import HollandTest from "./Page/HollandTest";
 
 const App: React.FC = () => {
   return (
@@ -45,6 +46,7 @@ const App: React.FC = () => {
         <Route path="/set-new-password" element={<SetNewPassword/>}/>
         <Route path="/about-us" element={<AboutUs/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/holland-Test" element={<HollandTest/>}/>
       </Routes>
     </Router>
     </>
