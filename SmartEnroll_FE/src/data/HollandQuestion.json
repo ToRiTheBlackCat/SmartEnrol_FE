@@ -2,123 +2,121 @@
   {
     "id": 1,
     "question": "Bạn thích làm việc với công cụ, máy móc hay động vật hơn là làm việc với con người?",
-    "type": "Realistic",
+    "type": "Thực tế",
     "answers": ["Có", "Không"]
   },
   {
     "id": 2,
     "question": "Bạn có thích nghiên cứu, phân tích và khám phá vấn đề?",
-    "type": "Investigative",
+    "type": "Nghiên cứu",
     "answers": ["Có", "Không"]
   },
   {
     "id": 3,
     "question": "Bạn thích sáng tạo, làm nghệ thuật, viết lách hoặc âm nhạc?",
-    "type": "Artistic",
+    "type": "Nghệ thuật",
     "answers": ["Có", "Không"]
   },
   {
     "id": 4,
     "question": "Bạn thích giao tiếp, hướng dẫn hoặc giúp đỡ người khác?",
-    "type": "Social",
+    "type": "Xã hội",
     "answers": ["Có", "Không"]
   },
   {
     "id": 5,
     "question": "Bạn thích kinh doanh, thuyết phục hoặc lãnh đạo người khác?",
-    "type": "Enterprising",
+    "type": "Lãnh đạo",
     "answers": ["Có", "Không"]
   },
   {
     "id": 6,
     "question": "Bạn thích công việc theo quy trình, tổ chức hoặc xử lý dữ liệu?",
-    "type": "Conventional",
+    "type": "Quy củ",
     "answers": ["Có", "Không"]
   },
-    {
-      "id": 7,
-      "question": "Bạn có thích làm việc ngoài trời hơn là trong văn phòng?",
-      "type": "Realistic",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 8,
-      "question": "Bạn thích giải quyết các vấn đề toán học hoặc khoa học?",
-      "type": "Investigative",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 9,
-      "question": "Bạn có thích vẽ tranh, thiết kế hoặc sáng tạo nội dung thị giác?",
-      "type": "Artistic",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 10,
-      "question": "Bạn có thích làm việc theo nhóm và giúp đỡ người khác phát triển?",
-      "type": "Social",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 11,
-      "question": "Bạn thích lập kế hoạch kinh doanh hoặc quản lý dự án?",
-      "type": "Enterprising",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 12,
-      "question": "Bạn thích công việc đòi hỏi sự chính xác, như kế toán hoặc kiểm toán?",
-      "type": "Conventional",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 13,
-      "question": "Bạn thích sử dụng công cụ hoặc máy móc để tạo ra sản phẩm?",
-      "type": "Realistic",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 14,
-      "question": "Bạn có hứng thú với việc lập trình và phát triển phần mềm?",
-      "type": "Investigative",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 15,
-      "question": "Bạn có đam mê với diễn xuất, hát hoặc biểu diễn trên sân khấu?",
-      "type": "Artistic",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 16,
-      "question": "Bạn thích lắng nghe và tư vấn cho người khác khi họ gặp khó khăn?",
-      "type": "Social",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 17,
-      "question": "Bạn có thích làm công việc bán hàng và đàm phán với khách hàng?",
-      "type": "Enterprising",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 18,
-      "question": "Bạn có thích nhập liệu, phân loại và tổ chức thông tin?",
-      "type": "Conventional",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 19,
-      "question": "Bạn thích làm việc với động vật, ví dụ như chăm sóc thú y hoặc huấn luyện?",
-      "type": "Realistic",
-      "answers": ["Có", "Không"]
-    },
-    {
-      "id": 20,
-      "question": "Bạn có thích nghiên cứu về khoa học y tế và sức khỏe?",
-      "type": "Investigative",
-      "answers": ["Có", "Không"]
-    }
-  ]
-  
-
+  {
+    "id": 7,
+    "question": "Bạn có thích làm việc ngoài trời hơn là trong văn phòng?",
+    "type": "Thực tế",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 8,
+    "question": "Bạn thích giải quyết các vấn đề toán học hoặc khoa học?",
+    "type": "Nghiên cứu",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 9,
+    "question": "Bạn có thích vẽ tranh, thiết kế hoặc sáng tạo nội dung thị giác?",
+    "type": "Nghệ thuật",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 10,
+    "question": "Bạn có thích làm việc theo nhóm và giúp đỡ người khác phát triển?",
+    "type": "Xã hội",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 11,
+    "question": "Bạn thích lập kế hoạch kinh doanh hoặc quản lý dự án?",
+    "type": "Lãnh đạo",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 12,
+    "question": "Bạn thích công việc đòi hỏi sự chính xác, như kế toán hoặc kiểm toán?",
+    "type": "Quy củ",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 13,
+    "question": "Bạn thích sử dụng công cụ hoặc máy móc để tạo ra sản phẩm?",
+    "type": "Thực tế",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 14,
+    "question": "Bạn có hứng thú với việc lập trình và phát triển phần mềm?",
+    "type": "Nghiên cứu",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 15,
+    "question": "Bạn có đam mê với diễn xuất, hát hoặc biểu diễn trên sân khấu?",
+    "type": "Nghệ thuật",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 16,
+    "question": "Bạn thích lắng nghe và tư vấn cho người khác khi họ gặp khó khăn?",
+    "type": "Xã hội",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 17,
+    "question": "Bạn có thích làm công việc bán hàng và đàm phán với khách hàng?",
+    "type": "Lãnh đạo",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 18,
+    "question": "Bạn có thích nhập liệu, phân loại và tổ chức thông tin?",
+    "type": "Quy củ",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 19,
+    "question": "Bạn thích làm việc với động vật, ví dụ như chăm sóc thú y hoặc huấn luyện?",
+    "type": "Thực tế",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 20,
+    "question": "Bạn có thích nghiên cứu về khoa học y tế và sức khỏe?",
+    "type": "Nghiên cứu",
+    "answers": ["Có", "Không"]
+  }
+]

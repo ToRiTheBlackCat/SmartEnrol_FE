@@ -9,7 +9,7 @@ import {useAuth, googleLoginAPI, viewUserInfo} from '../Service/api';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setUserRedux } from '../Store/authSlice';
-import store from '../Store/store';
+// import store from '../Store/store';
 const Login: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
@@ -34,37 +34,35 @@ const Login: React.FC = () => {
       toast.error("Vui lòng nhập đầy đủ thông tin");
       return;
     }
-
+  
     try {
       setIsLoading(true);
       const response = await loginAPI(formData.email, formData.password);
+      console.log(response);
       
-      console.log('Login Response:', response);
-
       if (response && response.token && response.accountId) {
-        const userData = {
+        const userData = await viewUserInfo(response.accountId);
+        console.log("userData", userData);
+        
+        dispatch(setUserRedux({
           token: response.token,
           accountId: response.accountId,
-          accountName: response.accountName || formData.email.split('@')[0],
-          email: response.email || formData.email
-        };
-
-        console.log('Dispatching to Redux:', userData);
-        dispatch(setUserRedux(userData));
-
-        toast.success("Đăng nhập thành công!");
+          accountName: userData.account.accountName || formData.email.split('@')[0],
+          email: userData.account.email || formData.email
+        }));
+  
+        toast.success(`Chào mừng, ${userData.account.accountName}`);
         navigate("/");
       } else {
-        console.error('Invalid response data:', response);
         toast.error("Thông tin đăng nhập không chính xác");
       }
     } catch (error: any) {
-      console.error('Login Error:', error);
       toast.error(error.response?.data?.message || "Đăng nhập thất bại");
     } finally {
       setIsLoading(false);
     }
   };
+  
 
   const handleGoogleSignIn = async (): Promise<void> => {
     const provider = new GoogleAuthProvider();
@@ -95,25 +93,25 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleLoginBasic = async () => {
-    const loggedInUser = await loginAPI(formData.email, formData.password);
-    if(loggedInUser){
+  // const handleLoginBasic = async () => {
+  //   const loggedInUser = await loginAPI(formData.email, formData.password);
+  //   if(loggedInUser){
       
-      const userId = store.getState().auth.accountId;
-      if(userId==null){
-        return
-      }
-      const userData = await viewUserInfo(userId)
-      const userName = userData.accountName;
-      const userEmail = userData.email;
-      dispatch(setUserRedux({token: loggedInUser.token, accountId: loggedInUser.accountId, accountName: userName, email: userEmail }));
-      toast.success(`Welcome, ${userName}`, {position: "top-right"});
-      // console.log(User);
-      navigate(`/`);
-    }else{
-      toast.error("Login failed", { position: "top-right" });
-    }
-  }
+  //     const userId = store.getState().auth.accountId;
+  //     if(userId==null){
+  //       return
+  //     }
+  //     const userData = await viewUserInfo(userId)
+  //     const userName = userData.accountName;
+  //     const userEmail = userData.email;
+  //     dispatch(setUserRedux({token: loggedInUser.token, accountId: loggedInUser.accountId, accountName: userName, email: userEmail }));
+  //     toast.success(`Welcome, ${userName}`, {position: "top-right"});
+  //     // console.log(User);
+  //     navigate(`/`);
+  //   }else{
+  //     toast.error("Login failed", { position: "top-right" });
+  //   }
+  // }
   return (
     <div className="h-screen w-full flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${Background})` }}>
       <div className="bg-gray-900 bg-opacity-80 p-8 rounded-xl shadow-lg w-96">
@@ -149,7 +147,6 @@ const Login: React.FC = () => {
 
           <button 
             type="submit"
-            onClick={handleLoginBasic}
             disabled={isLoading}
             className={`w-full py-2 text-white rounded-lg font-semibold ${
               isLoading 

@@ -10,7 +10,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { 
   FiUser, FiMenu, FiX, FiHome, FiMessageSquare, 
-  FiBook, FiCompass, FiInfo, FiChevronDown 
+  FiCompass, FiInfo, FiChevronDown 
 } from 'react-icons/fi';
 
 const Header: React.FC = () => {
@@ -44,7 +44,6 @@ const Header: React.FC = () => {
   const menuItems = [
     { path: '/', label: 'Trang chủ', icon: FiHome },
     { path: '/chat-with-ai', label: 'Chat with AI', icon: FiMessageSquare },
-    { path: '/tuyển-sinh', label: 'Tuyển sinh', icon: FiBook },
     { path: '/career-guidance', label: 'Hướng nghiệp', icon: FiCompass },
     { path: '/about-us', label: 'About Us', icon: FiInfo },
   ];
