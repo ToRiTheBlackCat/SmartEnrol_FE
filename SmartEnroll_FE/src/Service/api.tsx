@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
+import axiosInstance from "../Hooks/axiosInstance";
 import { User } from "./type";
 
 const API_URL = "https://smartenrol2.azurewebsites.net/api";
@@ -10,7 +11,7 @@ export const useAuth = () => {
 
   const loginAPI = async (email: string, password: string): Promise<User | null> => {
     try {
-      const response = await axios.post<User>(
+      const response = await axiosInstance.post<User>(
         `${API_URL}/account/login`,
         { email, password },
         { headers: { "Content-Type": "application/json" } }
@@ -42,7 +43,7 @@ export const useAuth = () => {
 
   const signupAPI = async (accountName: string, email: string, password: string): Promise<{ result: string, submitData: any } | null> => {
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         `${API_URL}/account/signup`,
         { 
           accountName,
@@ -65,7 +66,7 @@ export const useAuth = () => {
 
 export const googleLoginAPI = async (email: string, name: string) =>{
   try{
-    const response = await axios.post(`${API_URL}/Account/google-login`,
+    const response = await axiosInstance.post(`${API_URL}/Account/google-login`,
       {email, name}
     )
     return response.data;
@@ -77,7 +78,7 @@ export const googleLoginAPI = async (email: string, name: string) =>{
 
 export const viewUserInfo = async (userId: string) =>{
   try{
-    const response = await axios.get(`${API_URL}/Account/${userId}`)
+    const response = await axiosInstance.get(`${API_URL}/Account/${userId}`)
     return response.data;
   }catch(error){
     console.error("Get data fail", error);
@@ -85,17 +86,19 @@ export const viewUserInfo = async (userId: string) =>{
   }
 }
 
-export const updateProfileAPI = async (accountId: string, accountName: string, email: string, token: string) => {
+export const updateProfileAPI = async (accountId: string, accountName: string, email: string, area: string, areaId: number, token: string) => {
   try {
-    console.log('Sending update profile request:', { accountId, accountName, email });
+    console.log('Sending update profile request:', { accountId, accountName, email, areaId, area });
     console.log('Token:', token);
 
-    const response = await axios.patch(
+    const response = await axiosInstance.patch(
       `${API_URL}/Account/update-profile`,
       {
         accountId,
         accountName,
-        email
+        email,
+        areaId,
+        area,
       },
       {
         headers: {

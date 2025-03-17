@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "question": "Bạn thích làm việc với công cụ, máy móc hay động vật hơn là làm việc với con người?",
+    "type": "Realistic",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 2,
+    "question": "Bạn có thích nghiên cứu, phân tích và khám phá vấn đề?",
+    "type": "Investigative",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 3,
+    "question": "Bạn thích sáng tạo, làm nghệ thuật, viết lách hoặc âm nhạc?",
+    "type": "Artistic",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 4,
+    "question": "Bạn thích giao tiếp, hướng dẫn hoặc giúp đỡ người khác?",
+    "type": "Social",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 5,
+    "question": "Bạn thích kinh doanh, thuyết phục hoặc lãnh đạo người khác?",
+    "type": "Enterprising",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 6,
+    "question": "Bạn thích công việc theo quy trình, tổ chức hoặc xử lý dữ liệu?",
+    "type": "Conventional",
+    "answers": ["Có", "Không"]
+  }
+]
