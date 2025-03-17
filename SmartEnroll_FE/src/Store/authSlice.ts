@@ -4,6 +4,7 @@ import { authState } from "../Service/type";
 interface UpdateUserPayload {
     accountName?: string;
     email?: string;
+    area?: string;
 }
 
 const initialState: authState = {
@@ -11,6 +12,7 @@ const initialState: authState = {
     token: null,
     accountName: null,
     email: null,
+    area: null,
 };
 
 const authSlice = createSlice({
@@ -22,6 +24,7 @@ const authSlice = createSlice({
             state.accountId = action.payload.accountId;
             state.accountName = action.payload.accountName;
             state.email = action.payload.email;
+            state.area = action.payload.area;
         },
         updateUserInfo: (state, action: PayloadAction<UpdateUserPayload>) => {
             if (action.payload.accountName) {
@@ -29,6 +32,9 @@ const authSlice = createSlice({
             }
             if (action.payload.email) {
                 state.email = action.payload.email;
+            }
+            if(action.payload.area){
+                state.area = action.payload.area;
             }
         },
         logout: (state) => {

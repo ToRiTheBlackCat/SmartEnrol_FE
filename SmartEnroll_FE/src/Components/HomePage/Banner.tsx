@@ -29,15 +29,22 @@ const BannerImage: React.FC<BannerImageProps> = ({ image, active }) => {
   return (
     <div className={`carousel-item ${active ? "active" : ""}`} data-bs-interval="3000">
       <div
-        className="ratio"
-        style={
-            {
-              maxHeight: "460px",
-              ["--bs-aspect-ratio" as string]: "50%", // Fix lỗi TypeScript
-            } as React.CSSProperties
-          }
+        className="d-flex justify-content-center align-items-center"
+        style={{
+          maxHeight: "100%",
+          width: "100%",
+          overflow: "hidden",
+        }}
           >
-        <img className="d-block w-100 h-100 bg-dark cover" alt="" src={image} />
+        <img
+          className="d-block w-100"
+          alt="Banner"
+          src={image}
+          style={{
+            objectFit: "cover", // Giữ tỷ lệ ảnh, không bị kéo giãn
+            maxHeight: "100%",
+          }}
+        />
       </div>
       {/* <div className="carousel-caption d-none d-lg-block" style={{color: "blue"}}>
         <h5>Smart Enrol</h5>

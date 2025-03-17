@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../assets/LOGO/1.png'
+import { chatbotService } from '../Service/chatbotService';
 
 interface Message {
   id: number;
@@ -14,14 +15,18 @@ const ChatbotPage: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputMessage.trim()) {
       const now = new Date().toLocaleTimeString();
+      const userMessage = inputMessage;
+      
+      console.log('Sending message:', userMessage);
+      
       setMessages([
         ...messages,
         { 
           id: Date.now(), 
-          content: inputMessage, 
+          content: userMessage, 
           isBot: false,
           timestamp: now
         }
@@ -29,15 +34,33 @@ const ChatbotPage: React.FC = () => {
       setInputMessage('');
       setIsTyping(true);
       
-      setTimeout(() => {
-        setIsTyping(false);
+      try {
+        console.log('Calling chatbot API...');
+        const response = await chatbotService.sendMessage(userMessage);
+        console.log('Chatbot response:', response);
+        
         setMessages(prev => [...prev, {
           id: Date.now(),
-          content: "Đây là phản hồi mẫu từ Smart Enrol Bot",
+          content: response.answer,
           isBot: true,
           timestamp: new Date().toLocaleTimeString()
         }]);
-      }, 1500);
+      } catch (error: any) {
+        console.error('Error details:', {
+          message: error.message,
+          response: error.response?.data,
+          status: error.response?.status
+        });
+        
+        setMessages(prev => [...prev, {
+          id: Date.now(),
+          content: "Xin lỗi, tôi đang gặp sự cố kết nối. Vui lòng thử lại sau.",
+          isBot: true,
+          timestamp: new Date().toLocaleTimeString()
+        }]);
+      } finally {
+        setIsTyping(false);
+      }
     }
   };
 
@@ -153,7 +176,7 @@ const ChatbotPage: React.FC = () => {
               </svg>
             </div>
             <div>
-              <h2 className="font-medium text-gray-800">Smart Enrol Assistant</h2>
+              <h2 className="font-medium text-gray-800">Smart Enrol </h2>
               <p className="text-xs text-gray-500">{isTyping ? 'Đang nhập...' : 'Trực tuyến'}</p>
             </div>
           </div>
