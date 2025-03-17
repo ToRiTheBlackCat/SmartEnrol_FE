@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { FiEdit2, FiUser, FiMail, FiActivity, FiSettings, FiNavigation } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
 import { provinces } from "../data/Provinces";
+import Header from "../Components/HomePage/Header";
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -148,6 +149,8 @@ const ProfilePage: React.FC = () => {
   };
 
   const renderProfileContent = () => (
+    <>
+    <Header/>
     <div className="bg-white rounded-lg shadow-sm p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold text-gray-800">Thông tin cá nhân</h2>
@@ -262,6 +265,7 @@ const ProfilePage: React.FC = () => {
         </div>
       )}
     </div>
+    </>
   );
 
   const renderActivityContent = () => (
