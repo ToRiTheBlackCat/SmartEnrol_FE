@@ -10,7 +10,6 @@ export interface authState {
     accountId: string | null;
     accountName: string | null;
     email: string | null;
-    area: string | null;
 } 
 export interface Question {
     id: number;
