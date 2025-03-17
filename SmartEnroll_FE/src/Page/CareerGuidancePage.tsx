@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Components/HomePage/Header";
 import image from "../assets/CareerGuidance.png";
+
 import AnimatedText from "../Service/AnimatedText";
 import {motion} from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +21,7 @@ const CareerGuidancePage: React.FC = () => {
         {/* Left Content */}
         <div className="flex-1 pr-6">
           <h1 className="font-bold text-black text-5xl  mb-4">
+
             <AnimatedText text="Chỉ với những thông tin về bản thân bạn, bạn sẽ có câu trả lời"/>
           </h1>
           <p className="text-gray-600 text-3xl mb-6">
