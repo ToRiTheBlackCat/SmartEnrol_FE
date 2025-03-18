@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../assets/LOGO/1.png'
 import { chatbotService } from '../Service/chatbotService';
+import { useNavigate } from 'react-router-dom';
 
 interface Message {
   id: number;
@@ -14,6 +15,7 @@ const ChatbotPage: React.FC = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+  const navigate = useNavigate();
 
   const handleSendMessage = async () => {
     if (inputMessage.trim()) {
@@ -73,7 +75,7 @@ const ChatbotPage: React.FC = () => {
         {/* Logo Header */}
         <div className="p-4 border-b flex items-center justify-between">
           <div className="flex items-center space-x-3 overflow-hidden">
-            <img src={Logo} alt="Smart Enrol Logo" className="h-8 w-8" />
+            <img src={Logo} alt="Smart Enrol Logo" className="h-8 w-8" onClick={() => navigate("/")} />
             <span className={`font-bold text-xl whitespace-nowrap transition-opacity duration-300 ${
               isSidebarExpanded ? 'opacity-100' : 'opacity-0'
             }`}>

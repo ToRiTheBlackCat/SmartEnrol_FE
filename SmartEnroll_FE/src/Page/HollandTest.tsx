@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import hollandQuestion from "../data/HollandQuestion.json"; // Import JSON
 import { motion } from "framer-motion";
 import Header from "../Components/HomePage/Header";
+import chatbotService  from "../Service/chatbotService";
 
 const HollandTest: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [generatedPrompt, setGeneratedPrompt] = useState("");
+  const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswers((prev) => ({ ...prev, [currentIndex]: answer }));
@@ -55,9 +58,22 @@ const HollandTest: React.FC = () => {
     // Prompt kết quả
     const prompt = `Người dùng đã hoàn thành bài test Holland. Tính cách chiếm ưu thế là: ${dominantType}. Đề xuất ngành nghề phù hợp với nhóm tính cách này.`;
     setGeneratedPrompt(prompt);
+    handleSubmitToAI(prompt);
   };
 
-  return (
+  const handleSubmitToAI = async (prompt: string) => {
+    setLoading(true);
+    try {
+      const response = await chatbotService.sendMessage(prompt);
+      setAiResponse(response.answer);
+    } catch (error) {
+      console.error("Lỗi gọi chatbot:", error);
+      setAiResponse("Không thể lấy câu trả lời từ AI.");
+    }
+    setLoading(false);
+  };
+
+    return (
     <>
       <Header />
       <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-pink-300 to-purple-400 p-6">
@@ -67,6 +83,17 @@ const HollandTest: React.FC = () => {
               Bài test đã hoàn thành! 🎉
             </h2>
             <p className="text-lg text-gray-800 bg-white p-4 rounded-lg shadow-md">{generatedPrompt}</p>
+
+            {loading ? (
+              <p className="text-lg text-blue-500 mt-4">Đang lấy dữ liệu từ AI...</p>
+            ) : (
+              aiResponse && (
+                <div className="mt-4 p-4 bg-green-100 rounded-lg shadow-md">
+                  <h3 className="text-lg font-semibold text-green-700">Gợi ý ngành nghề:</h3>
+                  <p className="text-gray-800">{aiResponse}</p>
+                </div>
+              )
+            )}
           </div>
         ) : (
           <>
