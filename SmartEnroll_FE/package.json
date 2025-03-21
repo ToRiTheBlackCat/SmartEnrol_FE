@@ -19,7 +19,7 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
     "esbuild": "^0.25.0",
-    "firebase": "^11.3.0",
+    "firebase": "^11.4.0",
     "framer-motion": "^12.4.7",
     "leader-line": "^1.0.7",
     "motion": "^12.4.3",

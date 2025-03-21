@@ -5,12 +5,13 @@ import { getStorage, FirebaseStorage } from "firebase/storage";
 
 // Your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDTLktW_Qy0Vm4cdLnefhSLWDLUlY8PSAs",
-  authDomain: "auth-try-1eab5.firebaseapp.com",
-  projectId: "auth-try-1eab5",
-  storageBucket: "auth-try-1eab5.appspot.com",
-  messagingSenderId: "949377894898",
-  appId: "1:949377894898:web:866d9a32603e016c10436b",
+  apiKey: "AIzaSyC4ISCnozxGbWftoi0eRns63p6ZgT2KuO8",
+  authDomain: "smartenrol-a256b.firebaseapp.com",
+  projectId: "smartenrol-a256b",
+  storageBucket: "smartenrol-a256b.firebasestorage.app",
+  messagingSenderId: "254867808338",
+  appId: "1:254867808338:web:d0d2d677f8645d596e3f8b",
+  measurementId: "G-K2JEXSV4Y7",
 };
 
 // Initialize Firebase
