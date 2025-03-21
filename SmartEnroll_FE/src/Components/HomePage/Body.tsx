@@ -5,9 +5,46 @@ import AIPicture from "../../assets/AI.jpg";
 import UniPicture from "../../assets/dai-hoc-fpt-tp-hcm-1.jpeg";
 import Logo from "../../assets/LOGO/3.png";
 import AnimatedText from "../../Service/AnimatedText";
+import { fetchVietnamUniversities } from "../../Service/api";
+import { University } from "../../Service/type";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const BodySection: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [universities, setUniversities] = useState<University[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const universitiesPerPage = 3;
+
+  useEffect(() => {
+    const getUniversities = async () => {
+      const data = await fetchVietnamUniversities();
+      console.log(data)
+      setUniversities(data);
+    };
+
+    getUniversities();
+  }, []);
+
+  // Hàm lấy logo từ domain
+  const getUniversityLogo = (domains: string[]) => {
+    if (domains.length === 0) return "https://example.com/default-logo.png";
+    return `https://logo.clearbit.com/${domains[0]}`;
+  };
+  const visibleUniversities = universities.slice(currentIndex, currentIndex + universitiesPerPage);
+
+  // Chuyển sang nhóm trường tiếp theo
+  const nextUniversities = () => {
+    if (currentIndex + universitiesPerPage < universities.length) {
+      setCurrentIndex(currentIndex + universitiesPerPage);
+    }
+  };
+
+  // Quay về nhóm trường trước đó
+  const prevUniversities = () => {
+    if (currentIndex - universitiesPerPage >= 0) {
+      setCurrentIndex(currentIndex - universitiesPerPage);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,35 +131,6 @@ const BodySection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Tiêu đề phụ */}
-      <motion.h2
-        id="why-choose-us"
-        data-section
-        initial={{ opacity: 0, y: 10 }}
-        animate={visibleSections.has("why-choose-us") ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-        className="text-center text-xl text-white font-bold mt-12"
-      >
-        <AnimatedText text="Tại sao nên chọn chúng tôi?" />
-      </motion.h2>
-      <motion.p
-        id="why-choose-us"
-        data-section
-        initial={{ opacity: 0, y: 10 }}
-        animate={visibleSections.has("why-choose-us") ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-        className="text-center text-sm text-gray-500"
-      >
-        <AnimatedText text="Được sử dụng bởi nhiều học sinh" />
-      </motion.p>
-
-      {/* Ô thống kê */}
-      <div id="stats" data-section className="flex justify-center space-x-6 mt-6">
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-      </div>
-
       {/* Top các trường đại học Việt Nam */}
       <motion.h2
         id="top-universities"
@@ -135,10 +143,43 @@ const BodySection: React.FC = () => {
         <AnimatedText text="Top các trường đại học Việt Nam" />
       </motion.h2>
 
-      <div id="universities" data-section className="flex justify-center space-x-6 mt-6">
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+      <div id="universities" data-section className="relative flex items-center justify-center mt-6">
+        {/* Nút Trước */}
+        <button
+          onClick={prevUniversities}
+          disabled={currentIndex === 0}
+          className="absolute left-0 text-white p-3 rounded-full hover:bg-gray-700 disabled:opacity-50 transition"
+        >
+          <FaChevronLeft size={32} />
+        </button>
+
+        {/* Danh sách trường */}
+        <div className="flex gap-6">
+          {visibleUniversities.length > 0 ? (
+            visibleUniversities.map((uni, index) => (
+              <div key={index} className="p-6 bg-gray-800 rounded-lg shadow-md text-center w-60">
+                <img
+                  src={getUniversityLogo(uni.domains)}
+                  alt={uni.name}
+                  onError={(e) => (e.currentTarget.src = "https://example.com/default-logo.png")}
+                  className="w-24 h-24 mx-auto rounded-full bg-white p-2"
+                />
+                <h3 className="mt-2 text-white font-semibold">{uni.name}</h3>
+              </div>
+            ))
+          ) : (
+            <p className="text-white">Đang tải danh sách trường...</p>
+          )}
+        </div>
+
+        {/* Nút Sau */}
+        <button
+          onClick={nextUniversities}
+          disabled={currentIndex + universitiesPerPage >= universities.length}
+          className="absolute right-0 text-white p-3 rounded-full hover:bg-gray-700 disabled:opacity-50 transition"
+        >
+          <FaChevronRight size={32} />
+        </button>
       </div>
 
       {/* Top các ngành sinh viên lựa chọn */}

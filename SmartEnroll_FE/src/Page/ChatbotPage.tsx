@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Logo from '../assets/LOGO/1.png'
 import { chatbotService } from '../Service/chatbotService';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Components/HomePage/Header';
 
 interface Message {
   id: number;
@@ -67,6 +68,8 @@ const ChatbotPage: React.FC = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <div className={`${
@@ -325,6 +328,7 @@ const ChatbotPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

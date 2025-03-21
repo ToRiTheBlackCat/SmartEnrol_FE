@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import axiosInstance from "../Hooks/axiosInstance";
-import { User } from "./type";
+import { User, University } from "./type";
 
 const API_URL = "https://smartenrol2.azurewebsites.net/api";
 
@@ -14,7 +14,9 @@ export const useAuth = () => {
       const response = await axiosInstance.post<User>(
         `${API_URL}/account/login`,
         { email, password },
-        { headers: { "Content-Type": "application/json" } }
+        { headers: { "Content-Type": "application/json" },
+          // withCredentials: true
+      }
       );
 
       console.log('Login API Response:', response.data);
@@ -116,6 +118,24 @@ export const updateProfileAPI = async (accountId: string, accountName: string, e
       throw new Error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
     }
     throw new Error(error.response?.data?.message || "Cập nhật thông tin thất bại");
+  }
+};
+
+export const fetchVietnamUniversities = async (): Promise<University[]> => {
+  try {
+    const response = await axios.get<University[]>(
+      "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
+    );
+
+    // Lọc các trường đại học ở Việt Nam
+    const vietnamUniversities = response.data.filter(
+      (uni) => uni.country === "Viet Nam"
+    );
+
+    return vietnamUniversities;
+  } catch (error) {
+    console.error("Lỗi khi lấy danh sách trường đại học:", error);
+    return []; // Trả về mảng rỗng nếu có lỗi
   }
 };
 

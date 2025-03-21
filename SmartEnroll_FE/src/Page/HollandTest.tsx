@@ -82,13 +82,13 @@ const HollandTest: React.FC = () => {
             <h2 className="text-2xl font-semibold text-black mb-4">
               Bài test đã hoàn thành! 🎉
             </h2>
-            <p className="text-lg text-gray-800 bg-white p-4 rounded-lg shadow-md">{generatedPrompt}</p>
+            <p className="text-lg text-gray-800">{generatedPrompt}</p>
 
             {loading ? (
               <p className="text-lg text-blue-500 mt-4">Đang lấy dữ liệu từ AI...</p>
             ) : (
               aiResponse && (
-                <div className="mt-4 p-4 bg-green-100 rounded-lg shadow-md">
+                <div className="mt-4 p-4 shadow-md">
                   <h3 className="text-lg font-semibold text-green-700">Gợi ý ngành nghề:</h3>
                   <p className="text-gray-800">{aiResponse}</p>
                 </div>
@@ -106,7 +106,7 @@ const HollandTest: React.FC = () => {
                 <motion.button
                   key={idx}
                   onClick={() => handleAnswerSelect(answer)}
-                  className={`px-6 py-3 rounded-full text-white shadow-md transition ${
+                  className={`px-6 py-3 rounded-full !important text-white shadow-md transition ${
                     selectedAnswers[currentIndex] === answer
                       ? "bg-blue-600"
                       : "bg-gray-500 hover:bg-gray-600"
@@ -123,7 +123,7 @@ const HollandTest: React.FC = () => {
               <motion.button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className="px-6 py-3 bg-yellow-400 text-black rounded-full shadow-md transition hover:bg-yellow-500 disabled:bg-gray-300"
+                className="px-6 py-3 bg-yellow-400 text-black rounded-full !important shadow-md transition hover:bg-yellow-500 disabled:bg-gray-300"
                 whileHover={{ scale: 1.1 }}
               >
                 Câu trước
@@ -131,7 +131,7 @@ const HollandTest: React.FC = () => {
 
               <motion.button
                 onClick={handleNext}
-                className="px-6 py-3 bg-blue-500 text-white rounded-full shadow-md transition hover:bg-blue-600 disabled:bg-gray-300"
+                className="px-6 py-3 bg-blue-500 text-white rounded-full !important shadow-md transition hover:bg-blue-600 disabled:bg-gray-300"
                 whileHover={{ scale: 1.1 }}
               >
                 {currentIndex === hollandQuestion.length - 1 ? "Hoàn thành" : "Câu tiếp theo"}
