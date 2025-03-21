@@ -17,3 +17,8 @@ export interface Question {
     type: string;
     answers: string[];
 }
+export interface University {
+    name: string;
+    country: string;
+    domains: string[];
+    }
