@@ -8,6 +8,9 @@ import AnimatedText from "../../Service/AnimatedText";
 import { fetchVietnamUniversities } from "../../Service/api";
 import { University } from "../../Service/type";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import tech from "../../assets/cntt.jpg";
+import economic from "../../assets/kinhte.jpeg";
+import medical from "../../assets/yte.jpg";
 
 const BodySection: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -195,9 +198,30 @@ const BodySection: React.FC = () => {
       </motion.h2>
 
       <div id="majors" data-section className="flex justify-center space-x-6 mt-6">
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
-        <div className="w-30 h-30 bg-gray-300 rounded-lg"></div>
+         <div className="w-32 h-32">
+    <img
+      src={tech}
+      alt="Công nghệ thông tin"
+      className="w-full h-full object-cover rounded-lg"
+    />
+    <p className="text-center text-white mt-2">Công nghệ thông tin</p>
+  </div>
+  <div className="w-32 h-32">
+    <img
+      src={economic}
+      alt="Kinh tế"
+      className="w-full h-full object-cover rounded-lg"
+    />
+    <p className="text-center text-white mt-2">Kinh tế</p>
+  </div>
+  <div className="w-32 h-32">
+    <img
+      src={medical}
+      alt="Y khoa"
+      className="w-full h-full object-cover rounded-lg"
+    />
+    <p className="text-center text-white mt-2">Y khoa</p>
+  </div>
       </div>
     </div>
   );
