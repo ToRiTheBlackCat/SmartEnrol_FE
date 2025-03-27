@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../assets/LOGO/1.png'
 import { chatbotService } from '../Service/chatbotService';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Components/HomePage/Header';
+import { RootState } from '../Store/store';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 interface Message {
   id: number;
@@ -16,7 +19,15 @@ const ChatbotPage: React.FC = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+  const token = useSelector((state : RootState) => state.auth.token)
   const navigate = useNavigate();
+  
+  useEffect(() =>{
+    if(!token){
+      toast.warning("Bạn cần đăng nhập để sử dụng ChatBot!");
+      navigate("/login")
+    }
+  }, [token, navigate])
 
   const handleSendMessage = async () => {
     if (inputMessage.trim()) {
