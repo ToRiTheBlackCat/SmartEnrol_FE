@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { authState } from "../Service/type";
+import Cookies from "js-cookie";
 
 interface UpdateUserPayload {
     accountName?: string;
@@ -7,12 +8,15 @@ interface UpdateUserPayload {
     area?: string;
 }
 
-const initialState: authState = {
-    accountId: null,
-    token: null,
-    accountName: null,
-    email: null,
-};
+const storedUser = Cookies.get("user");
+const initialState: authState = storedUser
+  ? JSON.parse(storedUser)
+  : {
+      accountId: null,
+      token: null,
+      accountName: null,
+      email: null,
+    };
 
 const authSlice = createSlice({
     name: "auth",
@@ -37,6 +41,7 @@ const authSlice = createSlice({
             state.accountId = null;
             state.accountName = null;
             state.email = null;
+            Cookies.remove("user")
         },
     },
 });

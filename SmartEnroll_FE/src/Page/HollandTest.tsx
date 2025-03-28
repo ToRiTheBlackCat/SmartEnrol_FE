@@ -17,6 +17,8 @@ const HollandTest: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const token = useSelector((state : RootState) => state.auth.token);
   const navigate = useNavigate();
+  const [sessionID] = useState<string>(localStorage.getItem("chatSessionID") || "");
+
 
   useEffect(() =>{
     if(!token){
@@ -77,7 +79,7 @@ const HollandTest: React.FC = () => {
   const handleSubmitToAI = async (prompt: string) => {
     setLoading(true);
     try {
-      const response = await chatbotService.sendMessage(prompt);
+      const response = await chatbotService.sendMessage(prompt, sessionID);
       setAiResponse(response.answer);
     } catch (error) {
       console.error("Lỗi gọi chatbot:", error);

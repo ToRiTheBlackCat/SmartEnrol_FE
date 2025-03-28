@@ -15,17 +15,18 @@ export interface ChatbotRequest {
 // Service để gọi API chatbot
 export const chatbotService = {
   // Gửi câu hỏi đến chatbot và nhận câu trả lời
-  sendMessage: async (message: string): Promise<ChatbotResponse> => {
+  sendMessage: async (message: string, sessionID: string): Promise<ChatbotResponse> => {
     try {
       // Log request params
-      console.log('Request params:', { userInput: message });
+      console.log('Request params:', { userInput: message, sessionsID: sessionID });
 
       const response = await axiosInstance.post<ChatbotResponse>(
         `${API_URL}/Chat`,
         null,
         {
           params: {
-            userInput: message
+            userInput: message,
+            sessionID: sessionID
           },
           headers: {
             'Content-Type': 'application/json',

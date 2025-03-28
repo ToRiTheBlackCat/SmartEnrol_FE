@@ -21,6 +21,7 @@
     "esbuild": "^0.25.0",
     "firebase": "^11.4.0",
     "framer-motion": "^12.4.7",
+    "js-cookie": "^3.0.5",
     "leader-line": "^1.0.7",
     "motion": "^12.4.3",
     "prop-types": "^15.8.1",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^1.3.2",

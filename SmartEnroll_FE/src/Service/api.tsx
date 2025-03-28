@@ -138,5 +138,24 @@ export const fetchVietnamUniversities = async (): Promise<University[]> => {
     return []; // Trả về mảng rỗng nếu có lỗi
   }
 };
+export const getSessionID = async () =>{
+  try{
+    const response = await axiosInstance.get(`${API_URL}/Chat`)
+    return response.data.sessionID;
+  }catch(error : any){
+    console.log(error);
+  }
+};
+export const deleteSessionID = async(sessionId : string) =>{
+  try{
+    console.log("session",sessionId)
+    const response = await axios.delete(`${API_URL}/Chat?sessionID=${sessionId}`);
+    localStorage.removeItem('chatSessionID');
+    return response
+  }catch(error : any){
+    console.log(error);
+    throw error;
+  }
+}
 
 
