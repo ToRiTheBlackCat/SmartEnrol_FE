@@ -9,6 +9,7 @@ import {useAuth, googleLoginAPI, viewUserInfo} from '../Service/api';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setUserRedux } from '../Store/authSlice';
+import Cookies from "js-cookie";
 // import store from '../Store/store';
 const Login: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,12 +45,18 @@ const Login: React.FC = () => {
         const userData = await viewUserInfo(response.accountId);
         console.log("userData", userData);
         
-        dispatch(setUserRedux({
+        const userInfo = {
           token: response.token,
           accountId: response.accountId,
           accountName: userData.account.accountName || formData.email.split('@')[0],
           email: userData.account.email || formData.email
-        }));
+        };
+  
+        // Lưu vào Redux
+        dispatch(setUserRedux(userInfo));
+  
+        // Lưu vào sessionStorage
+        Cookies.set("user", JSON.stringify(userInfo), { expires: 1 });
   
         toast.success(`Chào mừng, ${userData.account.accountName}`);
         navigate("/");
@@ -78,12 +85,19 @@ const Login: React.FC = () => {
 
       const response = await googleLoginAPI(email, name);
       if (response) {
-        dispatch(setUserRedux({
+        const userInfo = {
           token: response.token,
           accountId: response.accountId,
           accountName: response.accountName || name,
           email: response.email || email
-        }));
+        };
+  
+        // Lưu vào Redux
+        dispatch(setUserRedux(userInfo));
+  
+        // Lưu vào sessionStorage
+        Cookies.set("user", JSON.stringify(userInfo), { expires: 1 });
+  
         toast.success(`Chào mừng, ${name}`);
         navigate("/");
       }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Logo from '../assets/LOGO/1.png'
 import { chatbotService } from '../Service/chatbotService';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import Header from '../Components/HomePage/Header';
 import { RootState } from '../Store/store';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { getSessionID, deleteSessionID } from '../Service/api';
 
 interface Message {
   id: number;
@@ -19,16 +20,36 @@ const ChatbotPage: React.FC = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+  const [sessionID, setSessionID] = useState<string>("");
   const token = useSelector((state : RootState) => state.auth.token)
   const navigate = useNavigate();
+  const hasInitialized = useRef(false);
   
   useEffect(() =>{
     if(!token){
       toast.warning("Bạn cần đăng nhập để sử dụng ChatBot!");
       navigate("/login")
     }
-  }, [token, navigate])
+    if (!sessionID && !hasInitialized.current) {
+      initializeSession();
+      // console.log("ID", sessionID);
+      
+      hasInitialized.current = true;
+    }
+  }, [token, navigate, sessionID])
 
+  const initializeSession = async (): Promise<string> => {
+    try {
+      const newSession = await getSessionID();
+      console.log("newSession", newSession);
+      localStorage.setItem('chatSessionID', newSession);
+      setSessionID(newSession);
+      return newSession;
+    } catch (error) {
+      console.error('Error initializing session:', error);
+      throw error; // Ném lỗi để handleSendMessage có thể xử lý
+    }
+  };
   const handleSendMessage = async () => {
     if (inputMessage.trim()) {
       const now = new Date().toLocaleTimeString();
@@ -49,8 +70,9 @@ const ChatbotPage: React.FC = () => {
       setIsTyping(true);
       
       try {
+        const currentSessionID = sessionID;
         console.log('Calling chatbot API...');
-        const response = await chatbotService.sendMessage(userMessage);
+        const response = await chatbotService.sendMessage(userMessage, currentSessionID);
         console.log('Chatbot response:', response);
         
         setMessages(prev => [...prev, {
@@ -75,6 +97,23 @@ const ChatbotPage: React.FC = () => {
       } finally {
         setIsTyping(false);
       }
+    }
+  };
+  const handleNewChat = async () => {
+    try {
+      // Xóa session ID cũ nếu có
+      if (sessionID) {
+        console.log(sessionID)
+        const result = await deleteSessionID(sessionID);
+        console.log(result)
+        setSessionID("");
+        
+      }
+      // Reset messages
+      setMessages([]);
+    } catch (error) {
+      console.error('Error deleting session:', error);
+      toast.error("Không thể bắt đầu cuộc trò chuyện mới");
     }
   };
 
@@ -117,7 +156,7 @@ const ChatbotPage: React.FC = () => {
           className={`flex items-center px-4 py-3 mt-2 hover:bg-gray-100 transition duration-200 ${
             isSidebarExpanded ? 'justify-start space-x-2' : 'justify-center'
           }`}
-          onClick={() => setMessages([])}
+          onClick={handleNewChat}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
