@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import hollandQuestion from "../data/HollandQuestion.json"; // Import JSON
 import { motion } from "framer-motion";
 import Header from "../Components/HomePage/Header";
 import chatbotService  from "../Service/chatbotService";
+import { RootState } from "../Store/store";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const HollandTest: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,6 +15,15 @@ const HollandTest: React.FC = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [aiResponse, setAiResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const token = useSelector((state : RootState) => state.auth.token);
+  const navigate = useNavigate();
+
+  useEffect(() =>{
+    if(!token){
+          toast.warning("Bạn cần đăng nhập để thực hiện bài trắc nghiệm");
+          navigate("/login")
+    }
+  }, [token, navigate])
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswers((prev) => ({ ...prev, [currentIndex]: answer }));
