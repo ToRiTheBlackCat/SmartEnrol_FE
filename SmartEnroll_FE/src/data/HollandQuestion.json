@@ -1,122 +1,242 @@
 [
   {
     "id": 1,
-    "question": "Bạn thích làm việc với công cụ, máy móc hay động vật hơn là làm việc với con người?",
-    "type": "Thực tế",
+    "question": "Bạn thích giải quyết vấn đề và tìm ra giải pháp sáng tạo?",
+    "type": "Problem Solving",
     "answers": ["Có", "Không"]
   },
   {
     "id": 2,
-    "question": "Bạn có thích nghiên cứu, phân tích và khám phá vấn đề?",
-    "type": "Nghiên cứu",
+    "question": "Bạn có thích tạo ra những ý tưởng mới và độc đáo?",
+    "type": "Creative",
     "answers": ["Có", "Không"]
   },
   {
     "id": 3,
-    "question": "Bạn thích sáng tạo, làm nghệ thuật, viết lách hoặc âm nhạc?",
-    "type": "Nghệ thuật",
+    "question": "Bạn thích vẽ tranh, thiết kế hoặc sáng tạo nội dung nghệ thuật?",
+    "type": "Artistic",
     "answers": ["Có", "Không"]
   },
   {
     "id": 4,
-    "question": "Bạn thích giao tiếp, hướng dẫn hoặc giúp đỡ người khác?",
-    "type": "Xã hội",
+    "question": "Bạn có khả năng tư duy logic và phân tích dữ liệu?",
+    "type": "Logical Thinking",
     "answers": ["Có", "Không"]
   },
   {
     "id": 5,
-    "question": "Bạn thích kinh doanh, thuyết phục hoặc lãnh đạo người khác?",
-    "type": "Lãnh đạo",
+    "question": "Bạn có thích giao tiếp với người khác và truyền đạt ý tưởng một cách rõ ràng?",
+    "type": "Communication Skills",
     "answers": ["Có", "Không"]
   },
   {
     "id": 6,
-    "question": "Bạn thích công việc theo quy trình, tổ chức hoặc xử lý dữ liệu?",
-    "type": "Quy củ",
+    "question": "Bạn có thích làm việc theo nhóm và hợp tác với người khác?",
+    "type": "Teamwork",
     "answers": ["Có", "Không"]
   },
   {
     "id": 7,
-    "question": "Bạn có thích làm việc ngoài trời hơn là trong văn phòng?",
-    "type": "Thực tế",
+    "question": "Bạn thích phân tích vấn đề một cách chi tiết và tìm ra mô hình hoặc xu hướng?",
+    "type": "Analytical Thinking",
     "answers": ["Có", "Không"]
   },
   {
     "id": 8,
-    "question": "Bạn thích giải quyết các vấn đề toán học hoặc khoa học?",
-    "type": "Nghiên cứu",
+    "question": "Bạn có chú ý đến từng chi tiết nhỏ trong công việc?",
+    "type": "Attention to Detail",
     "answers": ["Có", "Không"]
   },
   {
     "id": 9,
-    "question": "Bạn có thích vẽ tranh, thiết kế hoặc sáng tạo nội dung thị giác?",
-    "type": "Nghệ thuật",
+    "question": "Bạn có khả năng lãnh đạo và hướng dẫn người khác?",
+    "type": "Leadership",
     "answers": ["Có", "Không"]
   },
   {
     "id": 10,
-    "question": "Bạn có thích làm việc theo nhóm và giúp đỡ người khác phát triển?",
-    "type": "Xã hội",
+    "question": "Bạn có thể thích nghi với những thay đổi và môi trường làm việc mới?",
+    "type": "Adaptability",
     "answers": ["Có", "Không"]
   },
   {
     "id": 11,
-    "question": "Bạn thích lập kế hoạch kinh doanh hoặc quản lý dự án?",
-    "type": "Lãnh đạo",
+    "question": "Bạn có khả năng quản lý thời gian hiệu quả để hoàn thành công việc đúng hạn?",
+    "type": "Time Management",
     "answers": ["Có", "Không"]
   },
   {
     "id": 12,
-    "question": "Bạn thích công việc đòi hỏi sự chính xác, như kế toán hoặc kiểm toán?",
-    "type": "Quy củ",
+    "question": "Bạn có thích tư duy phản biện và đặt câu hỏi về các giả định?",
+    "type": "Critical Thinking",
     "answers": ["Có", "Không"]
   },
   {
     "id": 13,
-    "question": "Bạn thích sử dụng công cụ hoặc máy móc để tạo ra sản phẩm?",
-    "type": "Thực tế",
+    "question": "Bạn có khả năng tự tạo động lực cho bản thân mà không cần sự giám sát?",
+    "type": "Self-Motivation",
     "answers": ["Có", "Không"]
   },
   {
     "id": 14,
-    "question": "Bạn có hứng thú với việc lập trình và phát triển phần mềm?",
-    "type": "Nghiên cứu",
+    "question": "Bạn có thể kiên trì đối mặt với thất bại và tiếp tục cố gắng?",
+    "type": "Resilience",
     "answers": ["Có", "Không"]
   },
   {
     "id": 15,
-    "question": "Bạn có đam mê với diễn xuất, hát hoặc biểu diễn trên sân khấu?",
-    "type": "Nghệ thuật",
+    "question": "Bạn có khả năng nhận biết và điều tiết cảm xúc của bản thân và người khác?",
+    "type": "Emotional Intelligence",
     "answers": ["Có", "Không"]
   },
   {
     "id": 16,
-    "question": "Bạn thích lắng nghe và tư vấn cho người khác khi họ gặp khó khăn?",
-    "type": "Xã hội",
+    "question": "Bạn có thể đưa ra quyết định nhanh chóng và hợp lý trong các tình huống khó khăn?",
+    "type": "Decision Making",
     "answers": ["Có", "Không"]
   },
   {
     "id": 17,
-    "question": "Bạn có thích làm công việc bán hàng và đàm phán với khách hàng?",
-    "type": "Lãnh đạo",
+    "question": "Bạn thích tìm hiểu thông tin và thực hiện nghiên cứu sâu về một chủ đề nào đó?",
+    "type": "Research Skills",
     "answers": ["Có", "Không"]
   },
   {
     "id": 18,
-    "question": "Bạn có thích nhập liệu, phân loại và tổ chức thông tin?",
-    "type": "Quy củ",
+    "question": "Bạn có khả năng xây dựng và duy trì các mối quan hệ chuyên nghiệp?",
+    "type": "Networking",
     "answers": ["Có", "Không"]
   },
   {
     "id": 19,
-    "question": "Bạn thích làm việc với động vật, ví dụ như chăm sóc thú y hoặc huấn luyện?",
-    "type": "Thực tế",
+    "question": "Bạn có thể đưa ra những ý tưởng sáng tạo và đổi mới trong công việc?",
+    "type": "Innovation",
     "answers": ["Có", "Không"]
   },
   {
     "id": 20,
-    "question": "Bạn có thích nghiên cứu về khoa học y tế và sức khỏe?",
-    "type": "Nghiên cứu",
+    "question": "Bạn có khả năng quản lý rủi ro và đưa ra kế hoạch dự phòng?",
+    "type": "Risk Management",
     "answers": ["Có", "Không"]
-  }
+  },
+  {
+    "id": 21,
+    "question": "Bạn có thể giải quyết xung đột một cách hiệu quả và xây dựng mối quan hệ tốt đẹp?",
+    "type": "Conflict Resolution",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 22,
+    "question": "Bạn có khả năng thuyết phục người khác và bảo vệ quan điểm của mình?",
+    "type": "Persuasion",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 23,
+    "question": "Bạn có thể lập kế hoạch dài hạn và đưa ra chiến lược hiệu quả?",
+    "type": "Strategic Thinking",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 24,
+    "question": "Bạn có thể làm nhiều việc cùng một lúc mà vẫn giữ hiệu suất cao?",
+    "type": "Multitasking",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 25,
+    "question": "Bạn có sự nhạy bén và hiểu biết về các nền văn hóa khác nhau?",
+    "type": "Cultural Awareness",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 26,
+    "question": "Bạn có thích làm việc với khách hàng và đáp ứng nhu cầu của họ?",
+    "type": "Customer Service",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 27,
+    "question": "Bạn có khả năng đàm phán và thương lượng để đạt được thỏa thuận tốt nhất?",
+    "type": "Negotiation Skills",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 28,
+    "question": "Bạn có thể đặt mình vào vị trí của người khác và hiểu cảm xúc của họ?",
+    "type": "Empathy",
+    "answers": ["Có", "Không"]
+  },
+  {
+    "id": 29,
+    "question": "Bạn có tự tin khi nói trước đám đông và truyền tải thông điệp hiệu quả?",
+    "type": "Public Speaking",
+    "answers": ["Có", "Không"]
+  },
+    {
+      "id": 30,
+      "question": "Bạn có thích viết lách và sáng tác nội dung?",
+      "type": "Writing Skills",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 31,
+      "question": "Bạn có thích sử dụng phương pháp tư duy thiết kế để giải quyết vấn đề?",
+      "type": "Design Thinking",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 32,
+      "question": "Bạn có thường xuyên đưa ra ý tưởng sáng tạo trong công việc và cuộc sống?",
+      "type": "Creativity",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 33,
+      "question": "Bạn có thích giải quyết các vấn đề phức tạp bằng tư duy logic?",
+      "type": "Logical Thinking",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 34,
+      "question": "Bạn có khả năng giao tiếp hiệu quả và truyền đạt ý tưởng rõ ràng?",
+      "type": "Communication Skills",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 35,
+      "question": "Bạn thích làm việc theo nhóm và phối hợp với người khác để hoàn thành nhiệm vụ?",
+      "type": "Teamwork",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 36,
+      "question": "Bạn có khả năng phân tích dữ liệu và đưa ra nhận định dựa trên bằng chứng?",
+      "type": "Analytical Thinking",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 37,
+      "question": "Bạn có quan tâm đến việc tối ưu hóa quy trình làm việc và chú ý đến từng chi tiết nhỏ?",
+      "type": "Attention to Detail",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 38,
+      "question": "Bạn có khả năng thích nghi với môi trường làm việc mới một cách nhanh chóng?",
+      "type": "Adaptability",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 39,
+      "question": "Bạn có thể đưa ra quyết định nhanh chóng và hiệu quả trong những tình huống khó khăn?",
+      "type": "Decision Making",
+      "answers": ["Có", "Không"]
+    },
+    {
+      "id": 40,
+      "question": "Bạn có thích nghiên cứu thị trường và xây dựng các mối quan hệ chuyên nghiệp?",
+      "type": "Networking",
+      "answers": ["Có", "Không"]
+    }
 ]
