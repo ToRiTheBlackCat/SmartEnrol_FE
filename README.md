@@ -2,7 +2,7 @@
 
 ##👥 Members
 
-- **NGUYỄN HUỲNH MINH TRÍ** - LEADER / BAKC-END DEV  
+- **NGUYỄN HUỲNH MINH TRÍ** - LEADER / BACK-END DEV  
 - **CHÂU ANH TUẤN** - MOBILE DEV
 - **TẠ ĐỨC THẮNG** - FRONT-END DEV  
 - **NGUYỄN ĐOÀN VĂN THÀNH** - FRONT-END DEV
